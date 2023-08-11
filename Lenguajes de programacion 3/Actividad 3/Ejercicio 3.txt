@@ -1,0 +1,37 @@
+#include <iostream>
+#include <array>
+using namespace std;
+int juego;
+int contador = 0;
+int main()
+{
+ cout<<"Bienvenido "<<endl;
+ cout<<"Marcador actual: "<<contador<<endl;
+ cout<<"Sellecione una opcion: "<<endl;
+ cout<<"1-Ah ganado la partida"<<endl;
+ cout<<"2-Ah perdido la partida"<<endl;
+ cin>>juego;
+
+
+
+ //reslutado partida
+ switch (juego){
+
+   //gano
+ case 1:
+  contador =contador +  1;
+ cout<<"=============================================="<<endl;
+ cout<<"Felicidades por tu victoria!!"<<endl;
+cout<<"=============================================="<<endl;
+return main();
+
+//perdido
+case 2:
+contador =contador - 1;
+cout<<"=============================================="<<endl;
+cout<<"Animo en la siguiente partida!!"<<endl;
+cout<<"=============================================="<<endl;
+return main();
+ }
+
+}

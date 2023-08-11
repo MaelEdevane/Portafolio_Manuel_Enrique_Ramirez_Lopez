@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  //datos
+    string nombre;
+    string apellido;
+    double horasTrabajadas;
+    double pagoPorHora;
+    int area;
+    char puesto[36];
+    //menu
+    cout << "Bienvenido";
+    cout<<endl;
+    //introduccion de datos
+    cout <<"Puesto que emplea: "<<endl;
+    cin >>puesto;
+    cout <<"Area asignada: "<<endl;
+    cin >>area;
+    cout <<"Nombre del empleado: ";
+    cin >>nombre;
+    cin >>apellido;
+    cout <<"Horas trabajadas: ";
+    cin >> horasTrabajadas;
+    cout <<"Pago por hora: ";
+    cin >>pagoPorHora;
+    // Calculos
+    double salarioBruto = pagoPorHora * horasTrabajadas;
+    cout<<endl;
+    cout<<"==================================================="<<endl;
+    cout<<"Area asignada: "<<area<<endl;
+    cout<<"Puesto: "<<puesto<<endl;
+    cout << "Empleado: " << nombre << endl;
+    cout << "Apellido: " << apellido << endl;
+    cout << "Horas trabajadas: " << horasTrabajadas << endl;
+    cout << "Pago por hora: " << pagoPorHora << endl;
+    cout << "Salario bruto: " << salarioBruto << endl;
+    cout << "Sueldo neto: " << salarioBruto << endl;
+    cout<<"==================================================="<<endl;
+    return main();
+}

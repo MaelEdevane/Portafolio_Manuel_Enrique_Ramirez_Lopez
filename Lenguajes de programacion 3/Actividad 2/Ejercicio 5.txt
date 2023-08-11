@@ -1,0 +1,78 @@
+#include <iostream>
+#include <array>
+using namespace std;
+
+int main()
+{
+    // Declaramos tres arreglos, uno por cada columna de la tabla
+    // Primero los nombres
+    array<string, 7> articulos = {
+        "Lunes",
+        "Martes",
+        "Miercoles",
+        "Jueves",
+        "Viernes",
+        "Sabado",
+        "Domingo",
+    };
+    //Costos
+    array<double, 7> costos = {
+        1,1,1,1,1,1,1,};
+    // Existencias
+    array<int, 7> cantidades = {
+        10000,10000,10000,10000,10000,10000,10000};
+    string eleccion = "";
+    while (eleccion != "2")
+    {
+        // Imprimir los artículos
+        cout << "____________" << endl;
+        for (int i = 0; i < 7; i++)
+        {
+            // Imprimir el número para que el usuario pueda seleccionar el artículo
+            cout << "Número: " << i + 1 << endl;
+            cout << "Dia " << articulos[i] << endl;
+            
+          
+            cout << "____________" << endl;
+        }
+        // Imprimir el menú principal
+        cout << "1. Registrar venta dia $ \n2. Salir\nSeleccione: ";
+        // Leer lo que el usuario elija
+        cin >> eleccion;
+        if (eleccion == "1")
+        {
+            int numeroArticulo;
+            cout << "Ingrese el dia de la semana: ";
+            cin >> numeroArticulo;
+            int indice = numeroArticulo - 1;
+            if (indice >= 0 && indice <= 7)
+            {
+                // Solicitamos cantidad
+                int cantidad;
+                cout << "Venta del dia ";
+                cin >> cantidad;
+                if (cantidad > cantidades[indice])
+                {
+                    cout << "No hay suficiente existencia para vender esa cantidad" << endl;
+                }
+                else
+                {
+                    double costo = costos[indice];
+                    //Costo total
+                    double total = costo * cantidad;
+                    // Imprimimos
+                    cout << "========================================" << endl;
+                    cout << "Usted ha vendido el dia " << articulos[indice] << endl;
+                    cout << "Un total de $  " << total << endl;
+                    cout << "========================================" << endl;
+                    cantidades[indice] = cantidades[indice] - cantidad;
+                }
+            }
+            else
+            {
+                // Caso contrario, imprimimos que no es un artículo válido
+                cout << "Número de artículo " << numeroArticulo << " inválido" << endl;
+            }
+        }
+    }
+}

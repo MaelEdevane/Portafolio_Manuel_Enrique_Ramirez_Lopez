@@ -1,0 +1,268 @@
+#include <iostream> 
+#include <fstream> 
+#include <string> 
+#include <stdlib.h> 
+using namespace std;
+ 
+struct Fecha
+{
+	int dia;
+	int mes;
+	int year;
+};
+ 
+ 
+struct Coches
+{
+ 
+	string identificador;
+	char marca[15], modelo [15];
+	int plazas;
+	float precio;
+	Fecha f;
+};
+ 
+ 
+const int MAX=1000;	// 
+typedef Coches V_Coches[MAX];
+ 
+ 
+ 
+ 
+Coches IntroducirCoche();
+void BuscarCochesPlazas (Coches, int y);
+void BuscarMarca (Coches info, string marcax);
+void BuscarBarato (Coches info);
+void MostrarCoche(Coches);
+void IntroducirVectorCoches(V_Coches);
+void MuestraTodosCoches(const V_Coches);
+bool BorrarCocheIdentificador (Coches info, string ID1);
+void EncontrarCocheIdentificador (Coches info, string ID1);
+int menu (void);
+ 
+ 
+// Programa principal
+int main (void)
+{
+	V_Coches autos;
+	Coches info;
+	int  n, op;
+	do   
+	{
+		bool x, y, q;
+		string ID1, marcax;
+		op = menu ();  
+		switch (op)    
+		{
+			case 1:
+			IntroducirVectorCoches(autos);
+			break;
+ 
+			case 2:
+			MuestraTodosCoches(autos);
+			break;
+ 
+			case 3:
+			cout << "Introduce identificador del coche a eliminar." << endl;
+			cin >> ID1;
+			x=BorrarCocheIdentificador (info, ID1);
+			if (x==0)
+				cout << "Coche borrado." << endl;
+			break;
+ 
+			case 4:
+			cout << "Dime numero plazas:" << endl;
+			cin >> y;
+			void BuscarCochesPlazas (Coches, int y);
+			break;
+ 
+			case 5:
+			cout << "Dime identificador" << endl;
+			cin >> ID1;
+			EncontrarCocheIdentificador (info, ID1);
+			break;
+ 
+			case 6:
+			cout << "Introduce marca" << endl;
+			cin >> marcax;
+			BuscarMarca (info, marcax);
+			break;
+ 
+			case 7:
+			BuscarBarato (info);
+ 
+			default:
+			cout << "Saliendo del programa." << endl;
+			exit (EXIT_FAILURE); 
+		}
+	}	while ( op != 8);
+ 
+ 
+	system ("pause");
+	return 0;
+}
+
+ 
+int menu (void)
+{
+	int w;
+ 
+	cout << "Bienvenido al programa de gestion de alquiler de automoviles. Que quieres hacer?" << endl;
+	cout << "1: Añadir un coche al archivo" << endl;
+	cout << "2: Ver coches disponibles " << endl;
+	cout << "3: Borrar un coche del archivo" << endl;
+	cout << "4: Buscar coches con un numero de plazas especifico " << endl;
+	cout << "5: Buscar coche por identificador" << endl;
+	cout << "6: Buscar coche por marca" << endl;
+	cout << "7: Buscar el coche mas barato" << endl;
+	cout << "Si quiere salir del programa, pulse cualquier numero distinto" << endl;
+	cin >> w;
+	cin.ignore();
+ 
+	return w;
+}
+ 
+ 
+Coches IntroducirCoche ()
+{
+	Coches nuevocoche;
+ 
+	cout << "Introduzca los datos del coche" << endl;
+	cout << "ID" << endl;
+	cin>> nuevocoche.identificador;
+	cout << "Marca" << endl;
+	cin >> nuevocoche.marca ;
+	cout << " Modelo" << endl;
+	cin >> nuevocoche.modelo ;
+	cout << "Plazas, precio, dia, mes y año de compra" << endl;
+	cin>> nuevocoche.plazas >> nuevocoche.precio >> nuevocoche.f.dia >> nuevocoche.f.mes >> nuevocoche.f.year;
+ 
+	return nuevocoche;
+}
+
+ 
+void IntroducirVectorCoches (V_Coches autos)
+{
+	int i, n;
+	bool b;
+	string s;
+	Coches info;
+ 
+	cout << "¿Cuántos coches quieres introducir?" << endl;
+	cin >> n;
+ 
+	for (i=0; i<n; i++)
+		autos[i]= IntroducirCoche();
+		b=LeerFichero (s, info);
+		if (b == 0)
+			cout << " Error guardando archivo. " << endl;
+ 
+}
+ 
+ 
+ 
+
+
+ 
+ 
+void MuestraCoche (Coches nuevocoche)
+{
+ 
+	cout << nuevocoche.identificador << endl;
+	cout << nuevocoche.marca << endl;
+	cout << nuevocoche.modelo << endl;
+	cout << nuevocoche.plazas << nuevocoche.precio << nuevocoche.f.dia << nuevocoche.f.mes << nuevocoche.f.year << endl;
+ 
+}
+
+void MuestraTodosCoches (const V_Coches autos)
+ 
+{
+	int i, n;
+	cout << "¿Cuantos coches quieres que muestre?" << endl;
+	cin >> n;
+ 
+	for (i=0; i<n; i++)
+	{
+		MuestraCoche(autos[i]);
+		cout<< endl;
+	}
+ 
+}
+ 
+ 
+
+ 
+bool BorrarCocheIdentificador (Coches info, string ID1)
+{
+	int i;
+ 
+	bool  ok;
+	for (i=0; i<MAX; i++)
+ 
+		if (ID1=info.autos[i].identificador)
+			{
+			delete [] info.autos[i];
+			ok=true;
+			}
+		else
+			ok=false;
+ 
+	return ok;
+ 
+}
+
+ 
+void BuscarMarca (Coches info, string marcax)
+	{
+ 
+		int i;
+ 
+		for (i=0; i<MAX; i++)
+			if (marcax == info.autos[i].marca)
+						MuestraCoche(autos[i]);
+ 
+	}
+ 
+void BuscarCochesPlazas (Coches, int y)
+{
+	int i;
+	long num_autos_plazas;
+ 
+	for (i=0; i<MAX; i++)
+		if (y == info.autos[i].plazas)
+			num_autos_plazas ++;
+			MuestraCoche (autos[i]);
+ 
+	cout << "Hay" << num_autos_plazas << "coches con " << y << "plazas" << endl;
+}
+ 
+void EncontrarCocheIdentificador (Coches info, string ID1)
+{
+	for (i=0; i<MAX; i++)
+		if (ID1 == info.autos[i].identificador)
+			MuestraCoche(autos[i]);
+		else
+			i=-1;
+}
+ 
+
+ 
+void BuscarBarato (Coches info, int precio)
+{
+	int i;
+	float menor=100000000;
+ 
+	for (i=0;i<=MAX;i++)
+	{
+		if (info.autos[i].precio < menor)
+		{
+ 
+		menor=info.autos[i].precio;
+ 
+		};
+	}
+ 
+	MuestraCoche (menor);
+ 
+}

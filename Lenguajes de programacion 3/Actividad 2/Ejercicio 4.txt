@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+int costo;
+double pedidos;
+double envio = .20;
+double neto;
+int precio;
+
+
+
+//menu
+int main() {
+cout<<"                   Bienvendo"<<endl;
+cout<<"///////////////////////////////////////////////////"<<endl;
+cout<<"                Pago a provedor $ "<<endl;
+cin>>precio;
+pedidos = precio * envio;
+neto = precio + pedidos;
+
+
+
+
+
+//Variable de costo
+if (precio<3000){
+cout<<"==================================================="<<endl;
+//formula
+
+
+cout<<"                Ticket de pago"<<endl; 
+cout<<"              Total a pagar $ "<<neto<<endl;
+cout<<"Cheque generado con exito favor de pasar a recogerlo"<<endl;
+cout<<"==================================================="<<endl;
+cout<<"==================================================="<<endl;
+} 
+if (precio>3000){
+  cout<<"==================================================="<<endl;
+cout<<"                Ticket de pago"<<endl; 
+cout<<"              Total a pagar $ "<<precio<<endl;
+cout<<"Cheque generado con exito favor de pasar a recogerlo"<<endl;
+cout<<"==================================================="<<endl;cout<<"==================================================="<<endl;
+}
+if (precio>20000){
+  cout<<"==================================================="<<endl;
+cout<<"                Ticket de pago"<<endl; 
+cout<<"              Total a pagar $ "<<precio<<endl;
+cout<<"Favor de solicitar numero de cuenta para trasnferencia bancaria"<<endl;
+cout<<"==================================================="<<endl;cout<<"==================================================="<<endl;
+
+
+
+}
+return main();
+
+
+
+}

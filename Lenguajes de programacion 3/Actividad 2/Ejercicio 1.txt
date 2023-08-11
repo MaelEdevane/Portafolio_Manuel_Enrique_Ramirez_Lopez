@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // Info
+    string nombre;
+    string cedula;
+    double horasTrabajadas;
+    double pagoPorHora;
+    double comision;
+    cout << "Bienvenido"<<endl;
+    cout << "Nombre del empleado: ";
+    cin >> nombre;
+   
+    cin >> cedula;
+    cout << "\nHoras trabajadas: ";
+    cin >> horasTrabajadas;
+    cout << "\nPago por hora: ";
+    cin >> pagoPorHora;
+    cout<<"Porcentaje de comision (.10%, .5%): ";
+    cin>>comision;
+
+
+
+    // Cálculos
+    double salarioBruto = pagoPorHora * horasTrabajadas;
+    double ventas = salarioBruto * comision;
+
+
+
+    // Sueldo mas comision
+    double sueldoNeto = salarioBruto + ventas;
+
+
+
+
+    // Imprimir
+    cout<<"=============================================="<<endl;
+    cout << "Empleado: " << nombre << endl;
+    cout << "Horas trabajadas: " << horasTrabajadas << endl;
+    cout << "Pago por hora: " << pagoPorHora << endl;
+    cout << "Salario bruto: " << salarioBruto << endl;
+    cout<<"Comision: "<<ventas<<endl;
+    cout<<"=============================================="<<endl;
+
+    cout << "Sueldo neto: " << sueldoNeto << endl;
+    return 0;
+}

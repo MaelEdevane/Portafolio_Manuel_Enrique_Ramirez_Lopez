@@ -1,0 +1,92 @@
+
+                Console.WriteLine("\tTodo Muebles ");
+                Console.WriteLine("\tVentas");
+
+
+                Console.WriteLine("\n\nArticulo1");
+                Console.WriteLine("\nMonitor :  ");
+                //art1 = Int32.Parse(Console.ReadLine());
+
+
+                Console.WriteLine("Precio alacena : 3500 ");
+
+
+
+                Console.WriteLine("Cantidad :  ");
+                cant = Int32.Parse(Console.ReadLine());
+
+
+                importe = cant * PrecioM;
+                Console.WriteLine("Importe : {0}", importe);
+
+
+                Console.WriteLine("\n\nArticulo2");
+                Console.WriteLine("\nCPU :  ");
+                //  art2 = Int32.Parse(Console.ReadLine());
+
+
+                Console.WriteLine("Precio cama :4000 ");
+
+
+
+                Console.WriteLine("Cantidad :  ");
+                cant = Int32.Parse(Console.ReadLine());
+
+
+                importe1 = cant * PrecioC;
+                Console.WriteLine("Importe : {0}", importe1);
+
+
+                Console.WriteLine("\n\nArticulo3");
+                Console.WriteLine("\nVitrina :  ");
+                // art3 = Int32.Parse(Console.ReadLine());
+
+
+                Console.WriteLine("Precio Vitrina : 2500 ");
+
+
+
+                Console.WriteLine("Cantidad :  ");
+                cant = Int32.Parse(Console.ReadLine());
+
+
+                importe2 = cant * PrecioB;
+                Console.WriteLine("Importe : {0}", importe2);
+
+                Console.WriteLine("\n\nArticulo4");
+                Console.WriteLine("\nTeclado :  ");
+                //  art4 = Int32.Parse(Console.ReadLine());
+
+
+                Console.WriteLine("Precio comedor : 1000 ");
+
+
+
+                Console.WriteLine("Cantidad :  ");
+                cant = Int32.Parse(Console.ReadLine());
+
+                importe3 = cant * PrecioT;
+                Console.WriteLine("Importe : {0}", importe3);
+
+
+
+                Console.WriteLine("\n\nArticulo5");
+                Console.WriteLine("\nWebcam :  ");
+                // art5 = Int32.Parse(Console.ReadLine());
+
+
+                Console.WriteLine("Precio sillon : 500 ");
+
+
+                Console.WriteLine("Cantidad :  ");
+                cant = Int32.Parse(Console.ReadLine());
+
+                importe4 = cant * PrecioW;
+                Console.WriteLine("Importe : {0}", importe4);
+
+
+                sum = importe + importe1 + importe2 + importe3 + importe4;
+
+                Console.WriteLine("\n\n\tEl Total a Pagar es de : {0}", sum);
+
+                Console.ReadKey();

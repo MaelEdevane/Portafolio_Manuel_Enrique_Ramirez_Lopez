@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  //datos
+    string nombre;
+    string apellido;
+    int area;
+    char puesto[36];
+    //menu
+    cout << "Bienvenido";
+    cout<<endl;
+    //introduccion de datos
+    cout <<"Mes de nacimiento: "<<endl;
+    cin >>puesto;
+    cout <<"Dia de nacimiento: "<<endl;
+    cin >>area;
+    cout <<"Nombre: ";
+    cin >>nombre;
+    cin >>apellido;
+    cout<<endl;
+    cout<<"==================================================="<<endl;
+    cout<<"Fecha de nacimiento: "<<area<<endl;
+    cout<<"Mes de nacimiento: "<<puesto<<endl;
+    cout << "Nombre: " << nombre << endl;
+    cout << "Apellido: " << apellido << endl;
+    cout<<"==================================================="<<endl;
+    return main();
+}

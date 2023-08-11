@@ -1,0 +1,17 @@
+
+if (textBox1.Text == arreglo[0, 0] && textBox2.Text == arreglo[1, 0])
+            {
+                this.Hide();
+                Principal p = new Principal();
+                p.Show();
+            }else if(intentos==3){
+                MessageBox.Show("Ha alcanzado el nivel maximo de intentos, Porfavor vuelva a intentarlo", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+            else
+            {
+                intentos += 1;
+                MessageBox.Show("Error de autenticacion, verifique usuario y/O contraseña ó es posible que su cuenta este inhabilitada", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBox2.Text = "";
+
+            }

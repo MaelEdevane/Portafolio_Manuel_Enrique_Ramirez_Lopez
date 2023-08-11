@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+int main(){
+int b500,b20,b50,b100,b200,t;
+cout<<"ingrese la cantidad de su dinero:"<<endl;
+cin>>t;
+b500=(t/500); (t=t%500);
+b200=(t/200);(t=t%200);
+b100=(t/100);(t=t%100);
+b50=(t/50); (t=t%50);
+b20=(t/20); (t=t%20);
+cout<<endl;
+cout<<"billetes de  500 pesos: "<<b500<<endl;
+cout<<endl;
+cout<<"billetes de 200 pesos:  "<<b200<<endl;
+cout<<endl;
+cout<<"billetes de 100 pesos:  "<<b100<<endl;
+cout<<endl;
+cout<<"billetes de  50 pesos:  "<<b50<<endl;
+cout<<endl;
+cout<<"billetes de  20 pesos:  "<<b20<<endl;
+cout<<endl;
+
+cout<<"monedas  de   1 peso :  "<<t%10<<endl<<endl;
+cin.ignore(); return 0;
+}

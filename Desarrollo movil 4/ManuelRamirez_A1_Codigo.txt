@@ -1,0 +1,53 @@
+struct Item {
+    var name: String
+    var price: Double
+    var stock: Int
+}
+
+var items = [
+    Item(name: "SmartPhone", price: 799, stock: 24),
+    Item(name: "Laptop", price: 1599, stock: 11),
+    Item(name: "Tablet", price: 499, stock: 8),
+    Item(name: "SmartWatch", price: 249, stock: 11)
+]
+
+print("****************** Bienvenido a la tienda virtual Coppel ******************")
+print("")
+print("                   Estos son los artículos disponibles:")
+print("")
+for item in items {
+  print("")
+    print("                   \(item.name) - Precio: $\(item.price) - Stock: \(item.stock)")
+  print("")
+}
+
+while true {
+    print("Seleccione el número de artículo que desea comprar (1-4), o presione 5 para salir:")
+    if let input = readLine(), let choice = Int(input) {
+        if choice == 5 {
+            break
+        } else if choice < 1 || choice > 4 {
+            print("Entrada inválida. Por favor seleccione un número de artículo válido.")
+        } else {
+            let item = items[choice-1]
+            if item.stock > 0 {
+                print("Hay \(item.stock) unidades disponibles de \(item.name). ¿Cuántos desea comprar?")
+                if let qtyInput = readLine(), let qty = Int(qtyInput) {
+                    if qty > item.stock {
+                        print("Lo siento, no hay suficiente stock de este articulo.")
+                    } else {
+                        let total = Double(qty) * item.price
+                        print("Usted ha comprado \(qty) unidades de \(item.name) por $\(total).")
+                        items[choice-1].stock -= qty
+                    }
+                } else {
+                    print("Entrada inválida. Por favor seleccione un número de artículo válido.")
+                }
+            } else {
+                print("Lo siento, no queda stock de \(item.name) en este momento.")
+            }
+        }
+    } else {
+        print("Entrada inválida. Por favor seleccione un número de artículo válido.")
+    }
+}

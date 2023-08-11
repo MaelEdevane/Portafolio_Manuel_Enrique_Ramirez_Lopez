@@ -1,0 +1,68 @@
+#---------------------------------------------------------------
+#Global settings
+#---------------------------------------------------------------
+global
+log 127.0.0.1 local2
+chroot/var/lib/haproxy
+pidfile/var/run/haproxy.pid
+user haproxy
+group haproxy
+stats socket/var/lib/haproxy/stats mode 0600 level admin
+maxconn 50000
+stats timeout 30s
+daemon
+#---------------------------------------------------------------
+# common defaults that all the "listen" and "backend" sections will
+# use if not desifnated in their block
+#---------------------------------------------------------------
+defaults
+log global
+mode http
+potion httplog
+option redispatch
+option dontlognull
+option log-health-checks
+retries 3
+maxconn 50000
+timeout queue 1m
+timeout client 5m
+timeout connect 1m
+timeout server 60m
+timeout htt.request 10s
+tiemout htt-keep-alive 10s
+
+
+#---------------------------------------------------------------
+#stats site
+#---------------------------------------------------------------
+userlits stats-auth
+group admin users admin
+user admin insecure-password Adm0n
+group raadonly user haproxy
+user haproxy insecure-password haproxy
+
+listen stast
+bind*:90
+stats enable
+stast hide-version
+stast show-node Balancer_APP01
+stast uri/haproxy?stast
+acl AUTH http_auth(stast-aunth)
+acl AUTH_ADMIN http_auth:group(stats-auth)admin
+stats http-request auth unles AUTH
+stast admin if AUTH_ADMIN
+stats refersh 30s
+
+#-----------------FRONTEND---------------------------------------------
+frontend fInput
+bind *:80
+default_backend bGlobal
+#-----------------BACKEND----------------------------------------------
+backend bGlobal
+balance roundrobin
+Server APP01 192.168.122.80:80 weight 1 check inter 10s fall 3 rise 2
+server APP02 192.168.122.81:80 weight 1 check inter 10s fall 3 rise 2
+server APP03 192.168.122.82:80 weight 1 check inter 10s fall 3 rise 2
+
+
+- haproxy -f /etc/haproxy/haproxy.cfg -c

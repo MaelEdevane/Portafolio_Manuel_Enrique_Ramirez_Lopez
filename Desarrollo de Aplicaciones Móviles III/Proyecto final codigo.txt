@@ -1,0 +1,58 @@
+var resul=""
+print ("Elige la figura de la cuál desees obtener su área:")
+print ("1- Cuadrado")
+print ("2- Rectangulo")
+print ("3- Triangulo")
+print ("4- Circulo")
+var dato = readLine()! 
+var a = dato
+print("------------------------")
+print ("Elegiste un: ",a)
+print("------------------------")
+
+switch a {
+  case "Cuadrado", "cuadrado":
+  print ("Introduzca la medida del Lado:")
+      dato = readLine()! 
+      let lc = Double(dato)!
+      let resultado = (lc)*(lc)
+  print("/---------------------------------------/")
+    print("El área del Cuadrado es: ", resultado)
+  print("/---------------------------------------/")
+
+  case "Rectangulo", "Rectángulo", "rectangulo", "rectángulo":
+      print ("Introduzca la medida del ancho:")
+      dato = readLine()! 
+      let ar = Double(dato)!
+      print ("Introduzca la medida del largo:")
+      dato = readLine()! 
+      let lr = Double(dato)!
+      let resultado = (ar)*(lr)
+  print("/---------------------------------------/")
+    print("El área del Rectángulo es: ", resultado)
+  print("/---------------------------------------/")
+
+  case "Triangulo", "Triángulo", "triangulo", "triángulo":
+      print ("Introduzca la medida de la base:")
+      dato = readLine()! 
+      let bt = Double(dato)!
+      print ("Introduzca la medida de la altura:")
+      dato = readLine()! 
+      let ht = Double(dato)!
+      let resultado = ((bt)*(ht))/2
+  print("/---------------------------------------/")
+    print("El área del Triángulo es: ", resultado)
+  print("/---------------------------------------/")
+
+  case "Circulo", "Círculo", "circulo", "círculo":
+      let pi = (3.14)
+      print ("Introduzca la medida del radio:")
+      dato = readLine()! 
+      let rc = Double(dato)!
+      let resultado = (pi)*((rc)*(rc))
+  print("/---------------------------------------/")
+      print("El área del Círculo es: ", resultado)
+  print("/---------------------------------------/")
+  default:
+    print("Lo sentimos no podemos calcular dicha figura :c")
+}
